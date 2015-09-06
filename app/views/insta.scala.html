@@ -1,0 +1,47 @@
+@(friend: String, media: Media, dateTime: String, postLink: String)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Insta Roulette</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h3>What's the result?</h3>
+
+            <p>Your friend: <a href="https://instagram.com/@friend"> @friend </a></p>
+            <p>The chosen <a href=@media.link>picture </a> from @dateTime:</p>
+
+            <div id='post-message' class="alert alert-success" role="alert" hidden>You just liked this photo. Congrats, you are such a brave
+                one!</div>
+
+            @if(!media.captionText.isEmpty) {
+                <div class="well">@media.captionText</div>
+            }
+            <img src=@media.photoUrl alt="pic"/>
+
+            <button class="btn btn-primary" onclick="postLike(this)" data-url=@postLink>Brave enough to like it?</button>
+            <a href=@routes.Application.insta type="button" class="btn btn-default">Again?</a>
+        </div>
+    </body>
+
+    <script>
+        function postLike(btn) {
+        debugger;
+            var url = $(btn).data("url")
+
+             $.ajax({
+              type: "POST",
+              url: url
+            });
+
+            $(btn).hide()
+            $('#post-message').show()
+        }
+    </script>
+
+</html>

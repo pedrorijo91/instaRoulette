@@ -1,0 +1,28 @@
+@(error: String)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Insta Roulette</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>It seems that an error has ocurred!</h1>
+                <h1 align="center">☹</h1>
+            </div>
+
+            <h3 align="center">@error</h3>
+
+            <p align="center">
+                <a href=@routes.Application.insta type="button" class="btn btn-primary">Try again?</a>
+            </p>
+
+        </div>
+    </body>
+</html>
